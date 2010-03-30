@@ -1,0 +1,13 @@
+addClassPath("d:/bin/Transmogrify-M2/extensions/antlr.jar");
+addClassPath("d:/bin/Transmogrify-M2/extensions/antlr-full.jar");
+addClassPath("d:/bin/Transmogrify-M2/lib/transmogrify.jar");
+
+ 
+String[] lints = {
+"net.sourceforge.transmogrify.lint.UnbracedBlockLint",
+"net.sourceforge.transmogrify.lint.MultipleReturnLint",
+"net.sourceforge.transmogrify.lint.EmptyReturnLint",
+"net.sourceforge.transmogrify.lint.UnusedVariableLint",
+"net.sourceforge.transmogrify.lint.UnusedParameterLint"};
+
+net.sourceforge.transmogrify.lint.EmacsLint();

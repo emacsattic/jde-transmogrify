@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+
+<project name="jde-transmogrify" default="lib" basedir=".">
+
+  <property name="src.dir" value="java/src" />
+  <property name="build.dir" value="java/build" />
+  <property name="lib.dir" value="lib" />
+  <property name="doc.dir" value="doc" />
+  <property name="extensions.dir" value="java/extensions" />
+  <property name="jar.name" value="jde-transmogrify.jar" />
+   
+  <!-- =================================== -->
+  <!-- Build classpath                     -->
+  <!-- =================================== -->
+  <path id="build.classpath">
+    <pathelement path="${extensions.dir}/antlr.jar" />
+    <pathelement path="${extensions.dir}/transmogrify.jar" />
+  </path>
+	
+  <!-- Prepares the build directory -->
+  <target name="init">
+    <mkdir dir="${build.dir}"/>
+    <tstamp />
+  </target> 
+  
+  <!-- Checks whether the source needs to be compiled -->
+  <target name="uptodate-java">
+    <uptodate property="compile.uptodate" 
+              targetfile="compile.done">
+      <srcfiles dir="${src.dir}" excludes="**/*.txt,**/*.cache,**/prj.el,**/*.bsh" />
+    </uptodate>
+  </target>
+
+  <!-- compiles the source -->
+  <target name="compile" depends="init,uptodate-java"
+          unless="compile.uptodate">      
+    <javac srcdir="${src.dir}"
+           destdir="${build.dir}"
+           classpathref="build.classpath"
+  	   		 debug="on">
+			<exclude name="**/prj.el" />
+			<exclude name="**/*.cache" />
+			<exclude name="**/*.bsh" />
+		</javac>
+		
+		<touch file="compile.done" />
+  </target>
+  
+  <!-- create the .jar file -->
+  <target name="lib" depends="compile">
+    <mkdir dir="${lib.dir}" />
+
+    <jar jarfile="${lib.dir}/${jar.name}" 
+         basedir="${build.dir}" 
+         excludes="**/test/*" />
+  </target>
+  
+  <!-- zip the jar, source, and all supporting directories
+       except build -->
+  <target name="dist-all" depends="lib">
+  	<zip zipfile="jde-transmogrify-all.zip"
+  			 basedir="."
+  			 excludes="*.zip,build/**" />
+  </target>
+  
+	<!-- zip only the jar file, non javadoc documentation,
+			 license, etc. -->
+ 	<target name="dist-jaronly" depends="lib">
+ 		<zip zipfile="jde-transmogrify-bin.zip"
+ 				 basedir="."
+ 				 excludes="*.done,*.bat,*.zip,**/src/**,**/build/**,**/extensions/**"
+ 		/>
+ 	</target>
+ 
+  <!-- removes all class files from the build directory -->
+  <target name="clean">
+    <delete dir="${build.dir}" />
+    <delete dir="${lib.dir}" />
+    <delete file="compile.done" />
+  </target>
+ 
+</project>

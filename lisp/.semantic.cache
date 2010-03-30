@@ -1,0 +1,59 @@
+;; Object .semantic.cache
+;; SEMANTICDB Tags save file
+(semanticdb-project-database ".semantic.cache"
+  :file ".semantic.cache"
+  :tables (list 
+   (semanticdb-table "jde-transmogrify.el"
+    :file "jde-transmogrify.el"
+    :pointmax 8207
+    :major-mode 'emacs-lisp-mode
+    :tokens '(("jde-transmogrify-show-references" function nil nil nil (interactive) nil [2751 3116]) ("jde-transmogrify-find-definition" function nil nil nil (interactive) nil [3118 3276]) ("jde-transmogrify-rename-symbol" function nil nil ((user-visible . t)) "renames the symbol at the caret -- works for methods and vars.  
+  Asks the user for the new name of the symbol and renames the symbol based
+  on scope." nil [3278 3580]) ("jde-transmogrify-inline-temp" function nil nil ((user-visible . t)) "implements \"inline temp\" [Fowler, 119]" nil [3582 3762]) ("jde-transmogrify-replace-temp-with-query" function nil nil ((user-visible . t)) "implements \"replace temp with query\" [Fowler, 120]" nil [3764 4081]) ("jde-transmogrify-extract-method" function nil nil nil (interactive) nil [4116 4257]) ("jde-transmogrify-trivial-extract-method" function nil nil nil (interactive) nil [4259 4259]) ("jde-transmogrify-pull-up-field-refactorer" function nil nil nil (interactive) nil [4259 4463]) ("jde-transmogrify-block-bracer" function nil nil nil (interactive) nil [4491 4710]) ("jde-transmogrify-try-catch-encloser" function nil nil nil (interactive) nil [4756 4986]) ("jde-transmogrify-lint" function nil nil ((user-visible . t)) "Runs Transmogrify lint on selected files" ((dirty . t)) [5071 5517]) ("jde-transmogrify-call" function nil ("transmogrifier-class-name") nil (let ((transmogrify-error (jde-jeval (concat "jde.transmogrify.EmacsTransmogrifier.transmogrify(" transmogrifier-class-name ");")))) (if transmogrify-error (jde-transmogrify-display "*Transmogrify Error*" (concat transmogrifier-class-name ":
+" transmogrifier-error) nil) (message "Transmogrify successful"))) ((dirty . t)) [5543 6045]) ("jde-transmogrify-display" function nil ("title" "text" "compile") nil (let* ((parser-buffer-name title) (buf (get-buffer parser-buffer-name))) (if (not buf) (setq buf (get-buffer-create parser-buffer-name))) (set-buffer buf) (erase-buffer) (insert text) (pop-to-buffer buf) (when compile (compilation-mode))) nil [7873 8196]) ("jde-transmogrify-hook-open-file" function nil ("sourceFileName") nil (find-file sourceFileName) nil [8205 8205]) ("jde-transmogrify-hook-get-current-file" function nil nil nil "Gets the file name of the currently focused file." nil [8205 8205]) ("jde-transmogrify-hook-get-user-input" function nil ("prompt" "title") nil "Prompts for and returns user input
+   * @return String entered from user
+   * @param prompt question to ask the user
+   * @param title summary of the prompt" nil [8205 8205]) ("jde-transmogrify-hook-display-message" function nil ("title" "message") nil (message (concat title " : " message)) nil [8205 8205]) ("jde-transmogrify-hook-display-exception" function nil ("stackTrace" "description") nil (jde-transmogrify-display "*Transmogrify Exception*" (concat description ":
+" stackTrace) nil) nil [8205 8205]) ("jde-transmogrify-hook-get-text" function nil nil nil "Returns the entire focused source file" nil [8205 8205]) ("jde-transmogrify-hook-get-line" function nil ("lineNumber") nil "Retrieves a line from the focused file." nil [8205 8205]) ("jde-transmogrify-hook-select-text-lines" function nil ("startLineNumber" "startOffset" "endLineNumber" "endOffset") nil "Selects a bunch of text.
+   @parm startLineNumber the line number you wish to start selection on.
+   @parm startOffset the position on the line where you with selection to start.
+   @parm endLineNumber the line number you wish to end selection on.
+   @parm endOffset the position on the line where you with selection to end." nil [8205 8205]) ("jde-transmogrify-hook-select-text-region" function nil ("startPos" "endPos") nil "Selects a bunch of text.
+   @parm startPos the charcter you wish to start selection on
+   @parm endPos the character you wish to end selection on." nil [8205 8205]) ("jde-transmogrify-hook-de-select-text" function nil nil nil "Deselects text" nil [8205 8205]) ("jde-transmogrify-hook-get-selected-text" function nil nil nil "Returns the selected text in the form of a String" nil [8205 8205]) ("jde-transmogrify-hook-get-selected-lines" function nil nil nil "Returns the selected lines. The lines are concatenated in one String, where
+   each line is terminated by a 
+" nil [8205 8205]) ("jde-transmogrify-hook-get-caret-line-number" function nil nil nil " Returns the 1 based line number of where the cursor is.
+    @return int the line number that the cursor is on." nil [8205 8205]) ("jde-transmogrify-hook-get-caret-offset" function nil nil nil "Returns the 1 based offset of where the cursor is.
+  @return int the offset of where on the line the cursor is." nil [8205 8205]) ("jde-transmogrify-hook-get-caret-pos" function nil nil nil "Returns the 0 based position of where the cursor is.
+   @return int the position of where the cursor is in terms of total characters " nil [8205 8205]) ("jde-transmogrify-hook-get-selection-start" function nil nil nil (region-beginning) nil [8205 8205]) ("jde-transmogrify-hook-get-selection-end" function nil nil nil (region-end) nil [8205 8205]) ("jde-transmogrify-hook-set-caret-line-column" function nil ("lineNumber" "offset") nil "Sets the 0 based position of where the cursor is.
+   @parm lineNumber the line number of where the cursor is to be set.
+   @parm offset the position on the line where the cursor is to be set." nil [8205 8205]) ("jde-transmogrify-hook-set-caret-pos" function nil ("pos") nil "Sets the 0 based position of where the cursor is.
+   @parm pos the position where the cursor is to be set in terms of total
+   characters." nil [8205 8205]))
+    )
+   (semanticdb-table "jde-transmogrify-hook.el"
+    :file "jde-transmogrify-hook.el"
+    :pointmax 5457
+    :major-mode 'emacs-lisp-mode
+    :tokens '(("jde-transmogrify-hook-open-file" function nil ("sourceFileName") nil (message "jde-transmogrify-hook-open-file %s" sourceFileName) nil [27 329]) ("jde-transmogrify-hook-get-current-file" function nil nil nil "Gets the file name of the currently focused file." nil [331 509]) ("jde-transmogrify-hook-get-user-input" function nil ("prompt" "title") nil "Prompts for and returns user input
+   * @return String entered from user
+   * @param prompt question to ask the user
+   * @param title summary of the prompt" nil [511 831]) ("jde-transmogrify-hook-display-message" function nil ("title" "message") nil (message "jde-transmogrify-hook-display-message") nil [833 988]) ("jde-transmogrify-hook-display-exception" function nil ("stackTrace" "description") nil (message "jde-transmogrify-hook-display-exception") nil [990 1227]) ("jde-transmogrify-hook-get-text" function nil nil nil "Returns the entire focused source file" nil [1229 1418]) ("jde-transmogrify-hook-get-line" function nil ("lineNumber") nil "Retrieves a line from the focused file." nil [1420 1787]) ("jde-transmogrify-hook-select-text-lines" function nil ("startLineNumber" "startOffset" "endLineNumber" "endOffset") nil "Selects a bunch of text.
+   @parm startLineNumber the line number you wish to start selection on.
+   @parm startOffset the position on the line where you with selection to start.
+   @parm endLineNumber the line number you wish to end selection on.
+   @parm endOffset the position on the line where you with selection to end." nil [1789 2681]) ("jde-transmogrify-hook-select-text-region" function nil ("startPos" "endPos") nil "Selects a bunch of text.
+   @parm startPos the charcter you wish to start selection on
+   @parm endPos the character you wish to end selection on." nil [2683 3086]) ("jde-transmogrify-hook-de-select-text" function nil nil nil "Deselects text" nil [3088 3226]) ("jde-transmogrify-hook-get-selected-text" function nil nil nil "Returns the selected text in the form of a String" nil [3228 3454]) ("jde-transmogrify-hook-get-selected-lines" function nil nil nil "Returns the selected lines. The lines are concatenated in one String, where
+   each line is terminated by a 
+" nil [3456 3747]) ("jde-transmogrify-hook-get-caret-line-number" function nil nil nil " Returns the 1 based line number of where the cursor is.
+    @return int the line number that the cursor is on." nil [3749 4004]) ("jde-transmogrify-hook-get-caret-offset" function nil nil nil "Returns the 1 based offset of where the cursor is.
+  @return int the offset of where on the line the cursor is." nil [4006 4247]) ("jde-transmogrify-hook-get-caret-pos" function nil nil nil "Returns the 0 based position of where the cursor is.
+   @return int the position of where the cursor is in terms of total characters " nil [4249 4494]) ("jde-transmogrify-hook-get-selection-start" function nil nil nil (message "jde-transmogrify-hook-get-selection-start") nil [4496 4627]) ("jde-transmogrify-hook-get-selection-end" function nil nil nil (message "jde-transmogrify-hook-get-selection-end") nil [4629 4750]) ("jde-transmogrify-hook-set-caret-line-column" function nil ("lineNumber" "offset") nil "Sets the 0 based position of where the cursor is.
+   @parm lineNumber the line number of where the cursor is to be set.
+   @parm offset the position on the line where the cursor is to be set." nil [4752 5178]) ("jde-transmogrify-hook-set-caret-pos" function nil ("pos") nil "Sets the 0 based position of where the cursor is.
+   @parm pos the position where the cursor is to be set in terms of total
+   characters." nil [5180 5449]))
+    )
+   )
+  )
